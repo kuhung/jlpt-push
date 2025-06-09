@@ -1,0 +1,4 @@
+PyYAML
+aiohttp
+loguru
+pydantic 

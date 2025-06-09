@@ -1,0 +1,407 @@
+{
+  "version": "1.0",
+  "updated_at": "2025-06-10 01:10:05",
+  "total": 7,
+  "grammar": [
+    {
+      "id": "gram_001",
+      "title": "すぎです",
+      "reading": "すぎです",
+      "pattern": "〜すぎです",
+      "type": "",
+      "source_name": "日本語NETーJLPTに出ない？文型",
+      "tags": [],
+      "meaning": "非常に〜だ。\n程度が水準を超えていることを表す。",
+      "usage": "V（ます形）ます + すぎです。",
+      "level": "？",
+      "notes": "自分自身には使わない。話し手が聞き手に対して使う。\n助言や警告する時に使うことが多い。",
+      "examples": [
+        {
+          "jp": "：～すぎです   】",
+          "en": ""
+        },
+        {
+          "jp": "非常に〜だ。",
+          "en": ""
+        },
+        {
+          "jp": "程度が水準を超えていることを表す。",
+          "en": ""
+        },
+        {
+          "jp": "V（ます形）ます + すぎです。",
+          "en": "？"
+        },
+        {
+          "jp": "自分自身には使わない。話し手が聞き手に対して使う。",
+          "en": ""
+        },
+        {
+          "jp": "助言や警告する時に使うことが多い。",
+          "en": ""
+        },
+        {
+          "jp": "例文",
+          "en": ""
+        },
+        {
+          "jp": "醤油かけすぎですよ。",
+          "en": "You put too much soy sauce on it."
+        },
+        {
+          "jp": "タバコ吸いすぎですよ。",
+          "en": "You smoke too much."
+        },
+        {
+          "jp": "お酒の飲みすぎですよ。",
+          "en": "You drink too much alcohol."
+        },
+        {
+          "jp": "え！コーヒーに砂糖３杯は入れすぎですよ。",
+          "en": "What? Three sugars in your coffee is too much."
+        },
+        {
+          "jp": "お菓子ばかり食べすぎよ。あとで晩御飯食べられなくても知らないから。",
+          "en": "You're eating too many sweets. I won’t care if you can't finish your dinner later."
+        }
+      ],
+      "source_url": "https://nihongokyoshi-net.com/2019/09/01/jlptn0-grammar-sugidesu/"
+    },
+    {
+      "id": "gram_002",
+      "title": "でも",
+      "reading": "でも",
+      "pattern": "〜でも",
+      "type": "",
+      "source_name": "日本語NETーJLPTに出ない？文型",
+      "tags": [],
+      "meaning": "～か、何か\nいくつかある選択肢の中から、１つ例を取り上げていう言い方。",
+      "usage": "N + でも",
+      "level": "？\n例文",
+      "notes": "",
+      "examples": [
+        {
+          "jp": "：～でも   】",
+          "en": ""
+        },
+        {
+          "jp": "～か、何か",
+          "en": ""
+        },
+        {
+          "jp": "いくつかある選択肢の中から、１つ例を取り上げていう言い方。",
+          "en": ""
+        },
+        {
+          "jp": "N + でも",
+          "en": "？"
+        },
+        {
+          "jp": "例文",
+          "en": ""
+        }
+      ],
+      "source_url": "https://nihongokyoshi-net.com/2018/12/09/jlptn0-grammar-demo/"
+    },
+    {
+      "id": "gram_003",
+      "title": "づらい",
+      "reading": "づらい",
+      "pattern": "〜づらい",
+      "type": "adj-i",
+      "source_name": "日本語NETーJLPTに出ない？文型",
+      "tags": [],
+      "meaning": "〜するのが難しい\n「〜にくい」と似た意味を持つが、「～辛い」という漢字から来ていることから「精神的、肉体的に負担に思う」という時に使う。よって、以下のように自然現象と関連する動詞を使うことはできない。\n例：この紙袋、丈夫で破れづらいよ。\n[英訳]\ndifficult to do something",
+      "usage": "V（ます形）+ づらい",
+      "level": "?\n例文\nこのハンバーガー、大きすぎるし、形が崩れやすいし、食べづらいね。\n１２月で会社を辞めようと思っているんだけど、何だか言いづらいなぁ。\n昨日買った靴、デザインは気に入ってるんだけど、ちょっと歩きづらいのがね・・・。\n最近のスマホって、いろんな機能がついていて、僕には使いづらいなぁ。\n新聞の文字って小さいから読みづらいよ。\nさっき始まったセールの影響で、ウェブサイトにアクセスしづらくなってる。\n類似文型\n【JLPT N4】文法・例文：〜にくい\n【JLPT N2】文法・例文：〜がたい",
+      "notes": "",
+      "examples": [
+        {
+          "jp": "：～づらい   】",
+          "en": ""
+        },
+        {
+          "jp": "〜するのが難しい",
+          "en": ""
+        },
+        {
+          "jp": "「〜にくい」と似た意味を持つが、「～辛い」という漢字から来ていることから「精神的、肉体的に負担に思う」という時に使う。よって、以下のように自然現象と関連する動詞を使うことはできない。",
+          "en": ""
+        },
+        {
+          "jp": "例：この紙袋、丈夫で破れづらいよ。",
+          "en": "difficult to do something"
+        },
+        {
+          "jp": "V（ます形）+ づらい",
+          "en": "?"
+        },
+        {
+          "jp": "例文",
+          "en": ""
+        },
+        {
+          "jp": "このハンバーガー、大きすぎるし、形が崩れやすいし、食べづらいね。",
+          "en": ""
+        },
+        {
+          "jp": "１２月で会社を辞めようと思っているんだけど、何だか言いづらいなぁ。",
+          "en": ""
+        },
+        {
+          "jp": "昨日買った靴、デザインは気に入ってるんだけど、ちょっと歩きづらいのがね・・・。",
+          "en": ""
+        },
+        {
+          "jp": "最近のスマホって、いろんな機能がついていて、僕には使いづらいなぁ。",
+          "en": ""
+        },
+        {
+          "jp": "新聞の文字って小さいから読みづらいよ。",
+          "en": ""
+        },
+        {
+          "jp": "さっき始まったセールの影響で、ウェブサイトにアクセスしづらくなってる。",
+          "en": ""
+        },
+        {
+          "jp": "類似文型",
+          "en": ""
+        }
+      ],
+      "source_url": "https://nihongokyoshi-net.com/2019/02/18/jlptn0-grammar-durai/"
+    },
+    {
+      "id": "gram_004",
+      "title": "並み",
+      "reading": "なみ",
+      "pattern": "〜並み",
+      "type": "",
+      "source_name": "日本語NETーJLPTに出ない？文型",
+      "tags": [],
+      "meaning": "〜程度 / 〜と同じぐらい\n程度が同じぐらいであることを表す。",
+      "usage": "N + 並み",
+      "level": "？",
+      "notes": "慣用表現としても使われることが多い。\n月並み：あふれていて新鮮味がないこと。平凡なこと\n軒並み：多くの家が並んでいること\nお手並み：腕前や力量",
+      "examples": [
+        {
+          "jp": "：～並み   】",
+          "en": ""
+        },
+        {
+          "jp": "〜程度 / 〜と同じぐらい",
+          "en": ""
+        },
+        {
+          "jp": "程度が同じぐらいであることを表す。",
+          "en": ""
+        },
+        {
+          "jp": "N + 並み",
+          "en": "？"
+        },
+        {
+          "jp": "慣用表現としても使われることが多い。",
+          "en": ""
+        },
+        {
+          "jp": "月並み：あふれていて新鮮味がないこと。平凡なこと",
+          "en": ""
+        },
+        {
+          "jp": "軒並み：多くの家が並んでいること",
+          "en": ""
+        },
+        {
+          "jp": "お手並み：腕前や力量",
+          "en": ""
+        },
+        {
+          "jp": "例文",
+          "en": ""
+        }
+      ],
+      "source_url": "https://nihongokyoshi-net.com/2019/12/17/jlptn0-grammar-nami/"
+    },
+    {
+      "id": "gram_005",
+      "title": "にかけても",
+      "reading": "にかけても",
+      "pattern": "〜にかけても",
+      "type": "",
+      "source_name": "日本語NETーJLPTに出ない？文型",
+      "tags": [],
+      "meaning": "\"〜にかかわるとしても\"\n「もし失敗したら〜を失う覚悟ができている」という話し手の強い態度を表す。",
+      "usage": "N + にかけても\nNには「命、名誉、誇り」など価値の高いものが来る。",
+      "level": "N3",
+      "notes": "①「賭ける」という言葉から来ている\n②「〜かけても」の「も」は省略することができる。",
+      "examples": [
+        {
+          "jp": "：～にかけても   】",
+          "en": ""
+        },
+        {
+          "jp": "\"〜にかかわるとしても\"",
+          "en": ""
+        },
+        {
+          "jp": "「もし失敗したら〜を失う覚悟ができている」という話し手の強い態度を表す。",
+          "en": ""
+        },
+        {
+          "jp": "N + にかけても",
+          "en": ""
+        },
+        {
+          "jp": "Nには「命、名誉、誇り」など価値の高いものが来る。",
+          "en": "N3"
+        },
+        {
+          "jp": "①「賭ける」という言葉から来ている",
+          "en": ""
+        },
+        {
+          "jp": "②「〜かけても」の「も」は省略することができる。",
+          "en": ""
+        },
+        {
+          "jp": "例文",
+          "en": ""
+        },
+        {
+          "jp": "命にかけても、彼女を守ります。",
+          "en": ""
+        },
+        {
+          "jp": "我が社の名誉にかけても、このプロジェクトは成功させる必要がある。",
+          "en": ""
+        },
+        {
+          "jp": "我がチームの誇りにかけて、今日の試合には絶対に負けられない。",
+          "en": ""
+        },
+        {
+          "jp": "警視庁の威信にかけても、必ず犯人を逮捕してみせる。",
+          "en": ""
+        },
+        {
+          "jp": "我が社の信用にかけて、責任をもって対応させていただきます。",
+          "en": ""
+        }
+      ],
+      "source_url": "https://nihongokyoshi-net.com/2019/11/06/jlptn0-grammar-nikaketemo/"
+    },
+    {
+      "id": "gram_006",
+      "title": "まくる",
+      "reading": "まくる",
+      "pattern": "〜まくる",
+      "type": "v5",
+      "source_name": "日本語NETーJLPTに出ない？文型",
+      "tags": [],
+      "meaning": "とてもたくさん～する\n動作をたくさん繰り返したり、継続する様子。\n[英訳]\n\"do very much\"\nExpressed to repeat or continue an action a lot.",
+      "usage": "V（ます形） + まくる",
+      "level": "？",
+      "notes": "",
+      "examples": [
+        {
+          "jp": "：～まくる   】",
+          "en": ""
+        },
+        {
+          "jp": "とてもたくさん～する",
+          "en": ""
+        },
+        {
+          "jp": "動作をたくさん繰り返したり、継続する様子。",
+          "en": "\"do very much\""
+        },
+        {
+          "jp": "V（ます形） + まくる",
+          "en": "？"
+        }
+      ],
+      "source_url": "https://nihongokyoshi-net.com/2019/05/23/jlptn0-grammar-makuru/"
+    },
+    {
+      "id": "gram_007",
+      "title": "やつ",
+      "reading": "やつ",
+      "pattern": "〜やつ",
+      "type": "",
+      "source_name": "日本語NETーJLPTに出ない？文型",
+      "tags": [],
+      "meaning": "〜というもの\n物を詳しく説明するときに使う表現。\nカジュアルな言い方。",
+      "usage": "文 + やつ",
+      "level": "？\n例文\nA：日本語の辞書を探してるんだけど、何かおすすめある？\nB：これなんかどう？\nA：うーん、アクセントが書かれているやつが欲しいんだけど。\nA: I'm looking for a Japanese dictionary, do you have any suggestions?\nB: How about this one?\nA: Hmmm, I need one with accents on it.\nA：このコートいいんじゃない。\nB：そうだね。でも、もう少しゆったりしたやつが欲しいなあ。\nA: I think this coat is good.\nB: Yes, it is. But I'd like something a little more loose.\nA：あの曲って何っていう名前だっけ？\nB：あれって、どれ？\nA：あれだよ、あれ。えーっと、最近若い人に人気があって、よくCMで流れているやつ。\nA: What's the name of that song again?\nB: Which one is that?\nA: That one, that one. It's popular among young people these days, and is often shown in commercials.\nもっと大きめのやつないの？\nIsn't there a bigger one?\nこの文型が登場する教科書",
+      "notes": "",
+      "examples": [
+        {
+          "jp": "：～やつ   】",
+          "en": ""
+        },
+        {
+          "jp": "〜というもの",
+          "en": ""
+        },
+        {
+          "jp": "物を詳しく説明するときに使う表現。",
+          "en": ""
+        },
+        {
+          "jp": "カジュアルな言い方。",
+          "en": ""
+        },
+        {
+          "jp": "文 + やつ",
+          "en": "？"
+        },
+        {
+          "jp": "例文",
+          "en": ""
+        },
+        {
+          "jp": "A：日本語の辞書を探してるんだけど、何かおすすめある？",
+          "en": ""
+        },
+        {
+          "jp": "B：これなんかどう？",
+          "en": ""
+        },
+        {
+          "jp": "A：うーん、アクセントが書かれているやつが欲しいんだけど。",
+          "en": "A: I'm looking for a Japanese dictionary, do you have any suggestions?"
+        },
+        {
+          "jp": "A：このコートいいんじゃない。",
+          "en": ""
+        },
+        {
+          "jp": "B：そうだね。でも、もう少しゆったりしたやつが欲しいなあ。",
+          "en": "A: I think this coat is good."
+        },
+        {
+          "jp": "A：あの曲って何っていう名前だっけ？",
+          "en": ""
+        },
+        {
+          "jp": "B：あれって、どれ？",
+          "en": ""
+        },
+        {
+          "jp": "A：あれだよ、あれ。えーっと、最近若い人に人気があって、よくCMで流れているやつ。",
+          "en": "A: What's the name of that song again?"
+        },
+        {
+          "jp": "もっと大きめのやつないの？",
+          "en": "Isn't there a bigger one?"
+        },
+        {
+          "jp": "この文型が登場する教科書",
+          "en": ""
+        }
+      ],
+      "source_url": "https://nihongokyoshi-net.com/2020/01/02/jlptn0-grammar-yatsu/"
+    }
+  ]
+}
