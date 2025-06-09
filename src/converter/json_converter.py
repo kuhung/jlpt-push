@@ -195,7 +195,7 @@ def main():
     
     try:
         converter = GrammarConverter()
-        raw_path = os.path.join(os.path.dirname(__file__), '../../data/raw/term_bank_6.json')
+        raw_path = os.path.join(os.path.dirname(__file__), '../../data/raw/term_bank_3.json')
         out_path = os.path.join(os.path.dirname(__file__), '../../data/processed/grammar_bank.json')
         
         # 检查输入文件

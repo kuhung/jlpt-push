@@ -1,208 +1,138 @@
 # JLPT 日语语法推送系统
 
-## 一、系统架构
+## 1. 项目简介
 
-### 1. 文件结构
+本项目旨在打造一个自动化的日语语法学习推送系统。它能够解析特定格式的日语语法源数据，将其结构化后存储，并定时随机抽取一条语法知识，通过 [Bark](https://bark.day.app/#/tutorial) 推送到 iOS/macOS 设备，帮助用户利用碎片化时间学习和复习 JLPT 语法。
+
+## 2. 主要特性
+
+- **自动化数据转换**: 提供脚本将原始的、复杂的 JSON 数据转换为统一、清晰的结构化格式。
+- **模板化内容生成**: 推送内容（标题、正文）基于配置文件中的模板生成，方便自定义。
+- **Bark 服务集成**: 轻量化地集成了 Bark 推送服务，配置简单。
+- **异步化推送**: 使用 `aiohttp` 进行异步网络请求，高效无阻塞。
+- **定时任务调度**: 支持通过 `crontab` 实现无人值守的定时、自动化推送。
+- **健壮的日志与配置**: 提供清晰的日志记录和独立的配置文件，易于管理和排错。
+
+## 3. 环境配置与安装
+
+1. **克隆仓库**
+
+   ```bash
+   git clone <your-repo-url>
+   cd jlpt-push
+   ```
+2. **创建虚拟环境 (推荐UV)**
+
+   ```bash
+   uv venv
+   source .venv/bin/activate
+   ```
+3. **安装依赖**
+
+   ```bash
+   uv pip install -r requirements.txt
+   ```
+4. **准备原始数据**
+   将你的日语语法源文件 `term_bank_6.json` 放入 `data/raw/` 目录下。
+5. **配置 Bark Key**
+   编辑 `config/config.yaml` 文件，将 `key` 的值替换为你自己的 Bark 推送 Key。
+
+   ```yaml
+   bark:
+     key: YOUR_BARK_KEY # <--- 修改这里
+     url: https://api.day.app
+   ```
+
+## 4. 使用方法
+
+### 步骤一：转换数据
+
+在推送前，需要先将原始数据进行结构化处理。运行以下命令：
+
+```bash
+python src/converter/json_converter.py
+```
+
+该脚本会读取 `data/raw/term_bank_6.json`，处理后生成 `data/processed/grammar_bank.json`。
+
+### 步骤二：手动测试推送
+
+运行主脚本以测试单次推送是否成功：
+
+```bash
+python run_push.py
+```
+
+执行后，请检查你的设备是否收到推送，并查看终端和 `logs/push.log` 中的日志输出。
+
+## 5. 部署 (定时推送)
+
+使用 `crontab` 来实现定时自动推送。
+
+1. **获取绝对路径**
+
+   - Python 解释器路径: `which python3`
+   - 项目根目录路径: `pwd` (在 `jlpt-push` 目录下执行)
+2. **编辑 Crontab**
+   运行 `crontab -e`，并添加以下任务（请务必替换为你的绝对路径）：
+
+   ```crontab
+   # 每小时执行一次 JLPT 语法推送
+   0 * * * * cd /path/to/your/project/jlpt-push && /path/to/your/python3 run_push.py >> /path/to/your/project/jlpt-push/logs/cron.log 2>&1
+   ```
+
+---
+
+## 附：系统设计方案
+
+（此部分为开发过程中的设计文档，可供参考）
+
+### 系统架构
+
+#### 文件结构
 
 ```
 jlpt-push/
 ├── data/
-│   ├── raw/                 # 原始数据
-│   │   └── term_bank_6.json
-│   └── processed/           # 处理后的数据
-│       └── grammar_bank.json
+│   ├── raw/
+│   └── processed/
 ├── src/
-│   ├── converter/          # 数据转换模块
-│   │   ├── __init__.py
-│   │   └── json_converter.py
-│   ├── pusher/            # 推送模块
-│   │   ├── __init__.py
-│   │   └── bark_pusher.py
-│   └── utils/             # 工具模块
-│       ├── __init__.py
-│       └── content_formatter.py
+│   ├── converter/
+│   ├── pusher/
+│   └── utils/
 ├── config/
-│   └── config.yaml        # 配置文件（bark key等）
-├── logs/                  # 日志目录
-├── requirements.txt       # 依赖
-└── README.md             # 项目说明
+├── logs/
+├── requirements.txt
+├── run_push.py
+└── README.md
 ```
 
-### 2. 核心模块
+#### 核心模块
 
-- **数据转换模块**：处理原始JSON数据
-- **推送模块**：处理Bark推送
-- **工具模块**：格式化内容、日志等
+- **数据转换模块** (`src/converter`): 处理原始JSON数据。
+- **推送模块** (`src/pusher`): 处理Bark推送。
+- **内容格式化模块** (`src/utils`): 格式化推送内容。
+- **主脚本** (`run_push.py`): 调度和执行整个流程。
 
-## 二、详细设计
+### 数据结构设计
 
-### 1. 数据结构设计
+- **输入**: `data/raw/term_bank_6.json` (嵌套数组格式)
+- **输出**: `data/processed/grammar_bank.json` (结构化对象格式)
+  ```json
+  {
+      "id": "gram_001",
+      "title": "...",
+      "pattern": "...",
+      "meaning": "...",
+      "usage": "...",
+      "examples": [{"jp": "...", "en": "..."}],
+      "source_url": "...",
+      "level": "N3"
+  }
+  ```
 
-#### 输入数据结构（原始）
+### 技术选型
 
-```json
-[
-    [
-        "すぎです",
-        "すぎです",
-        "・〜すぎです",
-        "",
-        0,
-        [...],
-        0,
-        "日本語NET"
-    ]
-]
-```
-
-#### 输出数据结构（处理后）
-
-```json
-{
-    "version": "1.0",
-    "updated_at": "2024-xx-xx",
-    "grammar": [
-        {
-            "id": "gram_001",
-            "title": "すぎです",
-            "pattern": "・〜すぎです",
-            "meaning": "...",
-            "usage": "...",
-            "examples": [
-                {
-                    "jp": "...",
-                    "en": "..."
-                }
-            ],
-            "source": "...",
-            "level": "N3",
-            "tags": ["基础语法", "程度"]
-        }
-    ]
-}
-```
-
-### 2. 模块设计
-
-#### 2.1 数据转换模块 (converter)
-
-```python
-class GrammarConverter:
-    def __init__(self):
-        self.logger = logging.getLogger(__name__)
-  
-    def convert(self, raw_data: List) -> Dict:
-        """转换原始数据到标准格式"""
-        pass
-
-    def extract_examples(self, content: str) -> List[Dict]:
-        """提取例句"""
-        pass
-```
-
-#### 2.2 推送模块 (pusher)
-
-```python
-class BarkPusher:
-    def __init__(self, config: Dict):
-        self.api_key = config['bark_key']
-        self.base_url = config['bark_url']
-        self.logger = logging.getLogger(__name__)
-
-    async def push(self, content: Dict) -> bool:
-        """推送内容到Bark"""
-        pass
-```
-
-#### 2.3 内容格式化模块 (formatter)
-
-```python
-class ContentFormatter:
-    @staticmethod
-    def format_grammar(grammar: Dict) -> str:
-        """格式化语法内容"""
-        pass
-
-    @staticmethod
-    def format_examples(examples: List[Dict]) -> str:
-        """格式化例句"""
-        pass
-```
-
-### 3. 配置设计 (config.yaml)
-
-```yaml
-bark:
-  key: YOUR_BARK_KEY
-  url: https://api.day.app
-
-push:
-  interval: 3600  # 推送间隔（秒）
-  format:
-    title_template: "【JLPT语法】{title}"
-    body_template: "用法：{usage}\n意义：{meaning}\n例句：{example}"
-
-logging:
-  level: INFO
-  file: logs/app.log
-```
-
-## 三、技术选型
-
-### 1. 核心依赖
-
-- **PyYAML**: 配置文件处理
-- **aiohttp**: 异步HTTP请求
-- **loguru**: 日志处理
-- **pydantic**: 数据验证
-- **click**: CLI工具
-
-### 2. 开发工具
-
-- **black**: 代码格式化
-- **pylint**: 代码检查
-- **pytest**: 单元测试
-
-## 四、实现步骤
-
-1. **环境搭建**
-
-   - 创建项目结构
-   - 配置依赖管理
-2. **数据转换实现**
-
-   - 实现数据解析
-   - 实现数据转换
-   - 数据验证和测试
-3. **推送模块实现**
-
-   - Bark接口封装
-   - 内容格式化
-   - 推送逻辑实现
-4. **调度实现**
-
-   - crontab配置
-   - 错误处理
-   - 日志记录
-5. **测试和部署**
-
-   - 单元测试
-   - 集成测试
-   - 部署文档
-
-## 五、后续优化方向
-
-1. **数据增强**
-
-   - 添加更多语法数据源
-   - 支持多级别筛选
-2. **推送优化**
-
-   - 支持多推送渠道
-   - 支持推送历史记录
-   - 支持推送效果统计
-3. **用户体验**
-
-   - 添加Web管理界面
-   - 支持自定义推送模板
-   - 支持推送时间自定义
+- **核心依赖**: `PyYAML`, `aiohttp`
+- **日志**: `logging` (Python 标准库)
+- **调度**: `crontab`
