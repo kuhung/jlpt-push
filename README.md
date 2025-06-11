@@ -18,7 +18,7 @@
 1. **克隆仓库**
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/kuhung/jlpt-push.git
    cd jlpt-push
    ```
 2. **创建虚拟环境 (推荐UV)**
@@ -33,9 +33,15 @@
    uv pip install -r requirements.txt
    ```
 4. **准备原始数据**
-   将你的日语语法源文件 `term_bank_6.json` 放入 `data/raw/` 目录下。
+   将你的日语语法源文件 `term_bank_all.json` 放入 `data/raw/` 目录下。
+   数据源参考地址：
+
+   - https://github.com/aiko-tanaka/Grammar-Dictionaries
+   - https://drive.google.com/drive/folders/127R67ANHycDV8PwonlV6ZUYxdWVu6IQ6
+
+   建议下载 JLPT 相关数据，后续数据处理也是依照于此。
 5. **配置 Bark Key**
-   编辑 `config/config.yaml` 文件，将 `key` 的值替换为你自己的 Bark 推送 Key。
+   复制 `config/config_example.yaml`为 `config/config.yaml`文件,编辑 `config.yaml` 文件，将 `key` 的值替换为你自己的 Bark 推送 Key。
 
    ```yaml
    bark:
@@ -53,7 +59,7 @@
 python src/converter/json_converter.py
 ```
 
-该脚本会读取 `data/raw/term_bank_6.json`，处理后生成 `data/processed/grammar_bank.json`。
+该脚本会读取 `data/raw/term_bank_all.json`，处理后生成 `data/processed/grammar_bank.json`。
 
 ### 步骤二：手动测试推送
 
@@ -136,3 +142,7 @@ jlpt-push/
 - **核心依赖**: `PyYAML`, `aiohttp`
 - **日志**: `logging` (Python 标准库)
 - **调度**: `crontab`
+
+### 灵感来源
+
+- [日本語JLPT文法](https://jumble.social/users/npub1xr4jdgh7htsuraq8y34pufv3kc5mz2h9h0r9lv9a9t0xeuctvp6smrfyy8) - 每小时自动发送一条日语文法，包含文法，日文例句及中文翻译。
