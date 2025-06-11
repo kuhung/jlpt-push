@@ -1,4 +1,4 @@
-# JLPT 日语语法推送系统
+# JLPT 日本语文法抽查
 
 ## 1. 项目简介
 
@@ -39,7 +39,7 @@
    - https://github.com/aiko-tanaka/Grammar-Dictionaries
    - https://drive.google.com/drive/folders/127R67ANHycDV8PwonlV6ZUYxdWVu6IQ6
 
-   建议下载 JLPT 相关数据，后续数据处理也是依照于此。
+   **建议下载 JLPT 相关数据**，后续数据处理也是依照于此。
 5. **配置 Bark Key**
    复制 `config/config_example.yaml`为 `config/config.yaml`文件,编辑 `config.yaml` 文件，将 `key` 的值替换为你自己的 Bark 推送 Key。
 
