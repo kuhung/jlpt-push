@@ -7,7 +7,7 @@ manim/media/*
 __pycache__/
 *.py[cod]
 *$py.class
-
+data/processed/*
 # C extensions
 *.so
 
