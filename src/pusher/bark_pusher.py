@@ -1,5 +1,6 @@
 import aiohttp
 import logging
+import asyncio
 from typing import Dict
 from urllib.parse import quote
 
@@ -11,6 +12,8 @@ class BarkPusher:
             raise ValueError("Bark API key 未在配置文件中设置。")
         self.base_url = bark_config.get('url', 'https://api.day.app')
         self.logger = logging.getLogger(__name__)
+        self.max_retries = bark_config.get('max_retries', 3)
+        self.base_delay = bark_config.get('base_delay', 1)
 
     async def push(self, title: str, body: str, url: str = "") -> bool:
         """
@@ -36,18 +39,24 @@ class BarkPusher:
         if url:
             params['url'] = url
             
-        self.logger.info(f"正在推送到 Bark: {title}")
+        for attempt in range(self.max_retries):
+            self.logger.info(f"正在推送到 Bark (尝试 {attempt + 1}/{self.max_retries}): {title}")
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.post(push_url, params=params) as response:
+                        if response.status == 200:
+                            self.logger.info(f"推送成功: {title}")
+                            return True
+                        else:
+                            response_text = await response.text()
+                            self.logger.error(f"推送失败，状态码: {response.status}, 响应: {response_text}")
+            except aiohttp.ClientError as e:
+                self.logger.error(f"推送请求出错 (尝试 {attempt + 1}/{self.max_retries}): {e}")
+            
+            if attempt < self.max_retries - 1:
+                delay = self.base_delay * (2 ** attempt)
+                self.logger.info(f"等待 {delay} 秒后重试...")
+                await asyncio.sleep(delay)
         
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.post(push_url, params=params) as response:
-                    if response.status == 200:
-                        self.logger.info(f"推送成功: {title}")
-                        return True
-                    else:
-                        response_text = await response.text()
-                        self.logger.error(f"推送失败，状态码: {response.status}, 响应: {response_text}")
-                        return False
-        except aiohttp.ClientError as e:
-            self.logger.error(f"推送请求出错: {e}")
-            return False 
+        self.logger.error(f"达到最大重试次数，推送最终失败: {title} (推送URL: {push_url})")
+        return False 

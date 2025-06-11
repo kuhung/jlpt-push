@@ -1,0 +1,15 @@
+bark:
+  key: your-device-key
+  url: https://api.day.app
+  max_retries: 3
+  base_delay: 1
+
+push:
+  interval: 3600  # 推送间隔（秒）
+  format:
+    title_template: "【{level}】{title}"
+    body_template: "含义：{meaning}\n用法：{usage}\n注意：{notes}\n例句：{example}\n相似：{similar}"
+
+logging:
+  level: INFO
+  file: logs/app.log 

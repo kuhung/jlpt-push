@@ -14,7 +14,8 @@ class GrammarConverter:
             "usage": "[接続]",
             "level": "[JLPT レベル]",
             "notes": "[備考]",
-            "examples": "例文"
+            "examples": "\n例文\n",
+            "similar": "類似文型"
         }
 
     def convert(self, raw_data: List) -> Dict:
@@ -32,9 +33,7 @@ class GrammarConverter:
                     "title": item[0].strip(),
                     "reading": item[1].strip(),
                     "pattern": item[2].strip().replace("・", ""),
-                    "type": item[3].strip(),
-                    "source_name": item[7].strip() if len(item) > 7 else "",
-                    "tags": []
+                    # "source_name": item[7].strip() if len(item) > 7 else "",
                 }
 
                 # 解析内容块
@@ -105,14 +104,27 @@ class GrammarConverter:
         result["usage"] = self._clean_section(usage)
         
         # 提取JLPT等级
-        level = self._extract_between(text, self.sections["level"], self.sections["notes"])
-        if not level:  # 如果没有备考部分，尝试到例文
-            level = self._extract_between(text, self.sections["level"], self.sections["examples"])
-        result["level"] = self._clean_section(level)
+        level_pos = text.find(self.sections["level"])
+        if level_pos != -1:
+            # 找到level标签后的换行符位置
+            line_start = text.find('\n', level_pos) + 1
+            # 获取该行内容并去除前后空格
+            result["level"] = text[line_start:text.find('\n', line_start)].strip()
+        else:
+            result["level"] = ""
         
         # 提取备注
         notes = self._extract_between(text, self.sections["notes"], self.sections["examples"])
         result["notes"] = self._clean_section(notes)
+
+        #提取相似对照
+        similar_pos = text.find(self.sections["similar"])
+        if similar_pos != -1:
+            line_start = text.find('\n', similar_pos) + 1
+            similar = text[line_start:].strip()
+        else:
+            similar = ""
+        result["similar"] = self._clean_section(similar)
         
         return result
 
@@ -136,8 +148,8 @@ class GrammarConverter:
         if self.sections["examples"] not in content:
             return examples
 
-        # 获取例文部分
-        example_text = content.split(self.sections["examples"], 1)[1]
+        example_text = self._extract_between(content, self.sections["examples"], self.sections["similar"])
+
         # 分割成行
         lines = [line.strip() for line in example_text.split('\n') if line.strip()]
         
@@ -195,7 +207,7 @@ def main():
     
     try:
         converter = GrammarConverter()
-        raw_path = os.path.join(os.path.dirname(__file__), '../../data/raw/term_bank_3.json')
+        raw_path = os.path.join(os.path.dirname(__file__), '../../data/raw/term_bank_all.json')
         out_path = os.path.join(os.path.dirname(__file__), '../../data/processed/grammar_bank.json')
         
         # 检查输入文件

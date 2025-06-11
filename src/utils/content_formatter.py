@@ -49,6 +49,7 @@ class ContentFormatter:
             "meaning": grammar_item.get("meaning", ""),
             "level": grammar_item.get("level", ""),
             "notes": grammar_item.get("notes", ""),
+            "similar": grammar_item.get("similar", ""),
             "example": example_jp,
         }
         
